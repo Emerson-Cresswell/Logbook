@@ -21,6 +21,7 @@ Service worker/cache changed: Yes
 
 Completed:
 - Redesigned home screen header/hero, backup status card, CTA hierarchy, navigation cards, theme control placement, and footer/version presentation.
+- Refined V60 home crest/shield emblem and replaced the three-state System/Light/Dark theme control with a two-state Light/Dark segmented pill; saved `system` preferences now migrate to an explicit Light/Dark value.
 - Extended tokenised home-surface, glow, accent, and elevation styles using CSS custom properties for maintainability.
 - Kept existing home-screen actions, routes, and backup behaviour unchanged.
 - Updated runtime asset query strings to `v=60` in `index.html`.

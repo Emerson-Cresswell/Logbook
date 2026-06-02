@@ -2553,3 +2553,84 @@ html[data-theme="dark"] .home-nav-card {
 }
 
 .app-version-label { margin-top: 8px; font-size: 0.68rem; letter-spacing: 0.02em; }
+
+/* V60 polish pass 6: two-mode premium theme control + crest emblem */
+:root {
+  --home-toggle-bg: color-mix(in srgb, var(--home-masthead-bg) 70%, transparent);
+  --home-toggle-border: color-mix(in srgb, var(--home-card-border) 72%, var(--home-teal) 28%);
+  --home-toggle-active-bg: radial-gradient(circle at 35% 25%, color-mix(in srgb, var(--home-teal) 38%, #ffffff 62%) 0%, color-mix(in srgb, var(--home-card-bg) 86%, transparent) 72%);
+  --home-toggle-active-text: var(--home-card-text);
+  --home-crest-shield-fill: color-mix(in srgb, var(--home-teal) 68%, #0f766e 32%);
+  --home-crest-stroke: color-mix(in srgb, var(--home-accent-coral) 84%, var(--home-card-text) 16%);
+  --home-crest-line: #f7fffe;
+}
+html[data-theme="dark"] {
+  --home-toggle-active-bg: radial-gradient(circle at 42% 28%, rgba(58, 220, 213, 0.38) 0%, rgba(9, 43, 62, 0.94) 72%);
+  --home-toggle-active-text: #d8fffb;
+  --home-crest-shield-fill: color-mix(in srgb, var(--home-teal) 52%, #0b253d 48%);
+  --home-crest-line: #dffcff;
+}
+
+.home-brand-mark {
+  background: radial-gradient(120% 115% at 34% 24%, rgba(255,255,255,0.72) 0%, color-mix(in srgb, var(--home-teal) 32%, transparent) 30%, color-mix(in srgb, var(--home-card-bg) 90%, transparent) 64%, color-mix(in srgb, var(--home-accent-coral) 18%, transparent) 100%);
+}
+.home-brand-mark svg { width: 38px; height: 38px; overflow: visible; }
+.home-brand-mark .crest-shield {
+  fill: var(--home-crest-shield-fill);
+  stroke: var(--home-crest-stroke);
+  stroke-width: 2.1;
+  filter: drop-shadow(0 5px 8px rgba(2, 12, 24, 0.18));
+}
+.home-brand-mark .crest-shield-inner,
+.home-brand-mark .crest-staff,
+.home-brand-mark .crest-cross,
+.home-brand-mark .crest-wings {
+  fill: none;
+  stroke: var(--home-crest-line);
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.home-brand-mark .crest-laurel {
+  fill: none;
+  stroke: var(--home-accent-coral);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.theme-toggle.compact-theme-toggle {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  width: 86px;
+  max-width: 86px;
+  min-height: 38px;
+  padding: 3px;
+  border-radius: 999px;
+  background: var(--home-toggle-bg) !important;
+  border: 1px solid var(--home-toggle-border) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.48), 0 8px 18px rgba(2, 12, 24, 0.12) !important;
+  overflow: hidden;
+}
+.theme-toggle.compact-theme-toggle::after { content: none; display: none; }
+.theme-segment {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 30px;
+  border-radius: 999px;
+  color: color-mix(in srgb, var(--home-card-text) 58%, var(--home-subtle-text) 42%);
+  font-size: 1rem;
+  line-height: 1;
+  transition: background 160ms ease, color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+.theme-toggle[data-theme-state="light"] .theme-light,
+.theme-toggle[data-theme-state="dark"] .theme-dark {
+  background: var(--home-toggle-active-bg);
+  color: var(--home-toggle-active-text);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--home-teal) 26%, transparent), 0 6px 14px color-mix(in srgb, var(--home-teal) 18%, transparent), inset 0 1px 0 rgba(255,255,255,0.42);
+}
+.theme-toggle[data-theme-state="light"] .theme-light { color: var(--home-accent-coral); }
+.theme-toggle:active .theme-segment { transform: scale(0.98); }
+.home-masthead { position: relative; }
+.home-masthead > * { position: relative; z-index: 1; }

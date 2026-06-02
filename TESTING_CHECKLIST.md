@@ -213,8 +213,8 @@ After test Hosting changes:
 ## V60 premium home screen redesign checks
 
 1. Confirm home screen shows runtime version `v60`.
-2. Confirm premium home hero, backup card, and action cards render correctly in Light, Dark, and System theme modes.
-3. Confirm theme toggle remains on home and cycles System -> Light -> Dark with persisted preference.
+2. Confirm premium home hero, backup card, and action cards render correctly in Light and Dark theme modes.
+3. Confirm compact theme toggle remains on home and cycles Light -> Dark -> Light with persisted preference.
 4. Confirm backup status card still updates text/state and shows `Backup now` only when required.
 5. Confirm home action buttons still navigate correctly:
    - Add new entry
@@ -228,3 +228,4 @@ After test Hosting changes:
 8. Confirm backup/export/import workflows remain unchanged.
 9. Confirm no native alert/confirm/prompt dialogs appear.
 10. Confirm service-worker update delivers V60 assets after refresh/reopen in installed PWA.
+11. If `localStorage["mylogbook.theme"]` is manually set to `"system"`, reload once and confirm it is migrated to explicit `"light"` or `"dark"` and the toggle remains two-state only.

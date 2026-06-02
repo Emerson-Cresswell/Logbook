@@ -41,6 +41,7 @@ Hosting/deployment workflow (current):
 V60 Premium Home Screen Redesign (current most-recent task):
 - Redesigned home screen only using extensible V59 theme tokens and new V60 home tokens.
 - Added premium hero, elevated backup/status card styling, and refined home navigation card states.
+- Removed System theme mode for V60 runtime UI; theme is now explicit Light/Dark only, with saved `system` preferences migrated to the currently resolved palette.
 - Kept existing behaviour for all flows, data model, dialogs, and backup/export/import features.
 - Bumped runtime version label to v60 and aligned cache-busting query strings.
 - Bumped service-worker cache key and pre-cache asset URLs for V60 rollout.

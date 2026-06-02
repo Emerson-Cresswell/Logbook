@@ -1,4 +1,4 @@
-const CACHE_NAME = "procedure-logbook-v60-premium-home-redesign";
+const CACHE_NAME = "procedure-logbook-v60-premium-home-two-theme-toggle";
 
 const FILES_TO_CACHE = [
   "./",

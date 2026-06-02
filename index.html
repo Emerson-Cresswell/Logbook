@@ -16,14 +16,14 @@
   <script>
     (function () {
       var STORAGE_KEY = "mylogbook.theme";
-      var allowed = { light: true, dark: true, system: true };
       var stored = null;
       try { stored = localStorage.getItem(STORAGE_KEY); } catch (error) { stored = null; }
-      var preference = allowed[stored] ? stored : "system";
-      var resolved = preference === "system"
-        ? (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
-        : preference;
-      document.documentElement.setAttribute("data-theme", resolved);
+      var systemResolved = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      var preference = stored === "dark" || stored === "light" ? stored : (stored === "system" ? systemResolved : "light");
+      if (stored === "system") {
+        try { localStorage.setItem(STORAGE_KEY, preference); } catch (error) {}
+      }
+      document.documentElement.setAttribute("data-theme", preference);
       document.documentElement.setAttribute("data-theme-preference", preference);
     })();
   </script>
@@ -40,20 +40,22 @@
         <div class="home-shell">
           <div class="home-masthead">
             <div class="home-brand-mark" aria-hidden="true">
-              <svg viewBox="0 0 64 64" role="img" focusable="false">
-                <path d="M32 6l20 8v16c0 14-8.8 23.6-20 28-11.2-4.4-20-14-20-28V14l20-8z"/>
-                <path d="M32 16v30M22 31h20"/>
-                <path d="M12 42c2.5 5 5.5 8 10 10"/>
-                <path d="M52 42c-2.5 5-5.5 8-10 10"/>
+              <svg viewBox="0 0 80 80" role="img" focusable="false">
+                <path class="crest-laurel" d="M12 54c4 7 10 12 18 15M68 54c-4 7-10 12-18 15"/>
+                <path class="crest-shield" d="M40 8l22 9v19c0 16-9.6 28-22 34-12.4-6-22-18-22-34V17l22-9z"/>
+                <path class="crest-shield-inner" d="M40 16l14 6v14c0 10-5.8 18-14 22-8.2-4-14-12-14-22V22l14-6z"/>
+                <path class="crest-staff" d="M40 24v30"/>
+                <path class="crest-cross" d="M31 38h18M40 29v18"/>
+                <path class="crest-wings" d="M28 31c4 1 7 1 12-2 5 3 8 3 12 2"/>
               </svg>
             </div>
             <div class="home-brand-copy">
               <h2>Procedure &amp; CPD Logbook</h2>
               <p class="home-tagline">Your practice, your progress</p>
             </div>
-            <button id="themeToggleButton" class="button secondary theme-toggle compact-theme-toggle" type="button" aria-label="Theme preference: System. Activate to change." aria-describedby="themeToggleHint">System</button>
+            <button id="themeToggleButton" class="button secondary theme-toggle compact-theme-toggle" type="button" aria-label="Theme: Light. Activate to switch to dark mode." aria-describedby="themeToggleHint"><span class="theme-segment theme-light" aria-hidden="true">☀</span><span class="theme-segment theme-dark" aria-hidden="true">☾</span></button>
           </div>
-          <p id="themeToggleHint" class="help-text home-theme-hint">Theme: System → Light → Dark</p>
+          <p id="themeToggleHint" class="help-text home-theme-hint">Theme: Light ↔ Dark</p>
 
           <div id="backupCard" class="backup-card backup-ok home-backup-card">
             <h2 id="backupTitle">Backup up to date</h2>
