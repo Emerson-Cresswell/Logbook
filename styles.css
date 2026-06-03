@@ -3211,3 +3211,41 @@ html[data-theme="dark"] .home-nav-card {
     filter: blur(16px);
   }
 }
+
+/* V60 polish pass 10: iOS PWA status/safe-area theme background */
+:root {
+  --home-statusbar-bg-light: #f3f0ea;
+  --home-statusbar-bg-dark: #000612;
+}
+
+html {
+  background: var(--color-app-bg);
+}
+
+html[data-theme="dark"] {
+  background: #000612;
+}
+
+body[data-current-screen="homeScreen"] {
+  background-color: var(--home-statusbar-bg-light);
+}
+
+html[data-theme="dark"] body[data-current-screen="homeScreen"] {
+  background-color: var(--home-statusbar-bg-dark);
+}
+
+body[data-current-screen="homeScreen"] .app-header {
+  background: var(--home-statusbar-bg-light);
+}
+
+html[data-theme="dark"] body[data-current-screen="homeScreen"] .app-header {
+  background: var(--home-statusbar-bg-dark);
+}
+
+body[data-current-screen="homeScreen"] #app {
+  background: var(--home-bg-light);
+}
+
+html[data-theme="dark"] body[data-current-screen="homeScreen"] #app {
+  background: var(--home-bg-dark);
+}
