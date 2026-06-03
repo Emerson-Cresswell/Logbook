@@ -49,7 +49,7 @@ function applyTheme(preference) {
   document.documentElement.setAttribute("data-theme-preference", safePreference);
   document.body && document.body.setAttribute("data-theme-resolved", resolved);
   const themeMeta = document.querySelector("meta[name=\"theme-color\"]");
-  if (themeMeta) themeMeta.setAttribute("content", resolved === "dark" ? "#000612" : "#f3f0ea");
+  if (themeMeta) themeMeta.setAttribute("content", resolved === "dark" ? "#071626" : "#fffefb");
 }
 
 function saveThemePreference(preference) {

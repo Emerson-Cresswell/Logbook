@@ -2085,8 +2085,10 @@ html[data-theme="dark"] {
 
 /* V60 refinement pass: premium home alignment */
 :root {
-  --home-bg-light: radial-gradient(130% 82% at 0% 0%, #fffef8 0%, #f9f5ec 42%, #f5f7f8 100%);
-  --home-bg-dark: radial-gradient(120% 80% at 0% 0%, #132739 0%, #0d1a28 44%, #09121c 100%);
+  --home-bg-light-top: #fffefb;
+  --home-bg-dark-top: #071626;
+  --home-bg-light: radial-gradient(130% 82% at 0% 0%, var(--home-bg-light-top) 0%, #f9f5ec 42%, #f5f7f8 100%);
+  --home-bg-dark: radial-gradient(120% 80% at 0% 0%, var(--home-bg-dark-top) 0%, #0d1a28 44%, #09121c 100%);
   --home-masthead-bg: color-mix(in srgb, var(--color-surface-elevated) 76%, transparent);
   --home-masthead-border: color-mix(in srgb, var(--color-border-strong) 75%, #fff 25%);
   --home-teal-glow: rgba(34, 211, 238, 0.24);
@@ -2142,8 +2144,8 @@ html[data-theme="dark"] body[data-current-screen="homeScreen"] { background: var
 /* V60 polish pass 2: closer premium mockup language */
 :root {
   --home-font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-  --home-bg-light: radial-gradient(120% 72% at 0% 0%, #fffefb 0%, #f8f4ed 52%, #f3f3f1 100%);
-  --home-bg-dark: radial-gradient(130% 85% at 0% 0%, #06152a 0%, #071a30 46%, #030d1e 100%);
+  --home-bg-light: radial-gradient(120% 72% at 0% 0%, var(--home-bg-light-top) 0%, #f8f4ed 52%, #f3f3f1 100%);
+  --home-bg-dark: radial-gradient(130% 85% at 0% 0%, var(--home-bg-dark-top) 0%, #071a30 46%, #030d1e 100%);
   --home-masthead-bg: color-mix(in srgb, #ffffff 84%, #f7f2ea 16%);
   --home-masthead-border: #eadfd2;
   --home-card-bg: color-mix(in srgb, #ffffff 92%, #f5eee4 8%);
@@ -2384,8 +2386,6 @@ html[data-theme="dark"] .home-nav-card { box-shadow: var(--home-dark-soft-shadow
 
 /* V60 polish pass 4: close gap to target mockups */
 :root {
-  --home-statusbar-bg-light: #f3f2ef;
-  --home-statusbar-bg-dark: #031127;
   --home-hero-glass: color-mix(in srgb, var(--home-masthead-bg) 86%, transparent);
   --home-card-glass: color-mix(in srgb, var(--home-card-bg) 90%, transparent);
   --home-card-outline-soft: color-mix(in srgb, var(--home-card-border) 62%, transparent);
@@ -2393,12 +2393,12 @@ html[data-theme="dark"] .home-nav-card { box-shadow: var(--home-dark-soft-shadow
 }
 
 body[data-current-screen="homeScreen"] .app-header {
-  background: var(--home-statusbar-bg-light);
+  background: transparent;
   box-shadow: none;
   padding: calc(10px + env(safe-area-inset-top)) 16px 2px;
 }
 html[data-theme="dark"] body[data-current-screen="homeScreen"] .app-header {
-  background: var(--home-statusbar-bg-dark);
+  background: transparent;
 }
 body[data-current-screen="homeScreen"] #app {
   background: transparent;
@@ -2980,7 +2980,7 @@ html[data-theme="dark"] .home-primary-cta .home-nav-icon {
 }
 
 html[data-theme="dark"] {
-  --home-bg-dark: radial-gradient(115% 82% at 0% 0%, #071626 0%, #020b18 48%, #000612 100%);
+  --home-bg-dark: radial-gradient(115% 82% at 0% 0%, var(--home-bg-dark-top) 0%, #020b18 48%, #000612 100%);
   --home-masthead-bg: color-mix(in srgb, #061526 92%, #0b2436 8%);
   --home-masthead-border: #153654;
   --home-card-bg: color-mix(in srgb, #06162a 92%, #092338 8%);
@@ -3212,40 +3212,39 @@ html[data-theme="dark"] .home-nav-card {
   }
 }
 
-/* V60 polish pass 10: iOS PWA status/safe-area theme background */
+/* V60 polish pass 10: unified iOS PWA safe-area and home background */
 :root {
-  --home-statusbar-bg-light: #f3f0ea;
-  --home-statusbar-bg-dark: #000612;
-}
-
-html {
-  background: var(--color-app-bg);
+  --home-bg-light-top: #fffefb;
+  --home-bg-dark-top: #071626;
+  --home-bg-light: radial-gradient(120% 72% at 0% 0%, var(--home-bg-light-top) 0%, #f8f4ed 52%, #f3f3f1 100%);
 }
 
 html[data-theme="dark"] {
-  background: #000612;
+  --home-bg-dark: radial-gradient(115% 82% at 0% 0%, var(--home-bg-dark-top) 0%, #020b18 48%, #000612 100%);
+}
+
+html {
+  background: var(--home-bg-light-top);
+}
+
+html[data-theme="dark"] {
+  background: var(--home-bg-dark-top);
 }
 
 body[data-current-screen="homeScreen"] {
-  background-color: var(--home-statusbar-bg-light);
-}
-
-html[data-theme="dark"] body[data-current-screen="homeScreen"] {
-  background-color: var(--home-statusbar-bg-dark);
-}
-
-body[data-current-screen="homeScreen"] .app-header {
-  background: var(--home-statusbar-bg-light);
-}
-
-html[data-theme="dark"] body[data-current-screen="homeScreen"] .app-header {
-  background: var(--home-statusbar-bg-dark);
-}
-
-body[data-current-screen="homeScreen"] #app {
   background: var(--home-bg-light);
 }
 
-html[data-theme="dark"] body[data-current-screen="homeScreen"] #app {
+html[data-theme="dark"] body[data-current-screen="homeScreen"] {
   background: var(--home-bg-dark);
+}
+
+body[data-current-screen="homeScreen"] #app,
+html[data-theme="dark"] body[data-current-screen="homeScreen"] #app {
+  background: transparent;
+}
+
+body[data-current-screen="homeScreen"] .app-header,
+html[data-theme="dark"] body[data-current-screen="homeScreen"] .app-header {
+  background: transparent;
 }
