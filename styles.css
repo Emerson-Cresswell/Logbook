@@ -2634,3 +2634,122 @@ html[data-theme="dark"] {
 .theme-toggle:active .theme-segment { transform: scale(0.98); }
 .home-masthead { position: relative; }
 .home-masthead > * { position: relative; z-index: 1; }
+
+/* V60 polish pass 7: external app-ready emblem + final home geometry tuning */
+:root {
+  --home-emblem-size: clamp(62px, 18vw, 82px);
+  --home-masthead-content-gap: clamp(12px, 3.2vw, 18px);
+  --home-home-card-pad-y: 12px;
+  --home-home-card-pad-x: 14px;
+}
+
+.home-shell {
+  gap: 11px;
+}
+
+.home-masthead {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--home-masthead-content-gap);
+  padding: 15px 14px;
+}
+
+.home-brand-mark {
+  width: var(--home-emblem-size);
+  height: var(--home-emblem-size);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.home-brand-mark::before {
+  content: none;
+}
+
+.home-brand-emblem {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+  border: 0;
+  filter: none;
+  transform: none;
+}
+
+.home-brand-copy {
+  padding-left: clamp(12px, 3vw, 16px);
+}
+
+.home-brand-copy h2 {
+  font-size: clamp(1.2rem, 5vw, 1.9rem);
+  max-width: 15ch;
+}
+
+.home-tagline {
+  margin-top: 7px;
+}
+
+.home-backup-card {
+  min-height: 94px;
+  padding: var(--home-home-card-pad-y) var(--home-home-card-pad-x);
+}
+
+.home-primary-cta,
+.home-nav-card {
+  padding: var(--home-home-card-pad-y) var(--home-home-card-pad-x) !important;
+}
+
+.home-primary-cta {
+  min-height: 66px !important;
+}
+
+.home-nav-card {
+  min-height: 60px !important;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --home-emblem-size: 86px;
+    --home-home-card-pad-y: 14px;
+    --home-home-card-pad-x: 16px;
+  }
+
+  .home-shell {
+    max-width: 760px;
+    gap: 13px;
+  }
+
+  .home-masthead {
+    padding: 18px 18px;
+  }
+}
+
+@media (max-width: 390px) {
+  :root {
+    --home-emblem-size: 58px;
+  }
+
+  .home-masthead {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 10px;
+    padding: 13px 12px;
+  }
+
+  .compact-theme-toggle {
+    grid-column: auto;
+    justify-self: end;
+  }
+
+  .home-brand-copy h2 {
+    font-size: clamp(1.08rem, 5.8vw, 1.36rem);
+  }
+
+  .home-tagline {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+}
