@@ -43,6 +43,7 @@ V60 Premium Home Screen Redesign (current most-recent task):
 - Added premium hero, elevated backup/status card styling, and refined home navigation card states.
 - Home masthead now references the external transparent emblem file `mylogbook-emblem-correct-app-ready.png`; the file is expected at repo root but is not included by this text-only update.
 - Final V60 polish tightened masthead alignment, card geometry, typography, and responsive spacing while keeping home-screen scope only.
+- Latest focused refinement improves home CTA/navigation card proportions, serif label feel, icon tile alignment, chevron placement, and restrained pearl/teal elevation without changing IDs or JS behaviour.
 - Removed System theme mode for V60 runtime UI; theme is now explicit Light/Dark only, with saved `system` preferences migrated to the currently resolved palette.
 - Kept existing behaviour for all flows, data model, dialogs, and backup/export/import features.
 - Bumped runtime version label to v60 and aligned cache-busting query strings.
