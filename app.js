@@ -26,10 +26,10 @@ var formatDate = window.AppUtils.formatDate;
 
 
 const THEME_STORAGE_KEY = "mylogbook.theme";
-const THEME_OPTIONS = ["light", "dark", "system"];
+const THEME_OPTIONS = ["light", "dark"];
 
 const settingsState = {
-  theme: "system",
+  theme: "light",
   bound: false
 };
 
@@ -38,11 +38,11 @@ function getSystemTheme() {
 }
 
 function resolveTheme(preference) {
-  return preference === "system" ? getSystemTheme() : preference;
+  return preference === "dark" ? "dark" : "light";
 }
 
 function applyTheme(preference) {
-  const safePreference = THEME_OPTIONS.includes(preference) ? preference : "system";
+  const safePreference = THEME_OPTIONS.includes(preference) ? preference : "light";
   const resolved = resolveTheme(safePreference);
   settingsState.theme = safePreference;
   document.documentElement.setAttribute("data-theme", resolved);
@@ -63,16 +63,20 @@ function saveThemePreference(preference) {
 function loadThemePreference() {
   try {
     const stored = localStorage.getItem(THEME_STORAGE_KEY);
-    return THEME_OPTIONS.includes(stored) ? stored : "system";
+    if (THEME_OPTIONS.includes(stored)) return stored;
+    if (stored === "system") {
+      const migrated = getSystemTheme();
+      saveThemePreference(migrated);
+      return migrated;
+    }
+    return "light";
   } catch (error) {
-    return "system";
+    return "light";
   }
 }
 
 function getNextTheme(preference) {
-  if (preference === "system") return "light";
-  if (preference === "light") return "dark";
-  return "system";
+  return preference === "dark" ? "light" : "dark";
 }
 
 function renderThemeToggleLabel() {
@@ -80,13 +84,12 @@ function renderThemeToggleLabel() {
   if (!button) return;
   const active = settingsState.theme;
   const activeLabel = active.charAt(0).toUpperCase() + active.slice(1);
-  const resolved = resolveTheme(active);
-  const resolvedLabel = resolved.charAt(0).toUpperCase() + resolved.slice(1);
-  button.textContent = `Theme: ${activeLabel} (${resolvedLabel})`;
-  button.setAttribute("aria-label", `Theme preference: ${activeLabel}. Active palette: ${resolvedLabel}. Activate to change.`);
+  const nextLabel = getNextTheme(active).charAt(0).toUpperCase() + getNextTheme(active).slice(1);
+  button.innerHTML = `<span class="theme-segment theme-light" aria-hidden="true">☀</span><span class="theme-segment theme-dark" aria-hidden="true">☾</span>`;
+  button.setAttribute("aria-label", `Theme: ${activeLabel}. Activate to switch to ${nextLabel} mode.`);
   button.setAttribute("data-theme-state", active);
-  button.setAttribute("data-theme-resolved", resolved);
-  button.setAttribute("title", `Theme preference ${activeLabel}; active palette ${resolvedLabel}`);
+  button.setAttribute("data-theme-resolved", active);
+  button.setAttribute("title", `Theme: ${activeLabel}`);
 }
 
 function initThemeSettings() {
@@ -103,18 +106,6 @@ function initThemeSettings() {
       renderThemeToggleLabel();
     });
     settingsState.bound = true;
-  }
-
-  if (window.matchMedia) {
-    const media = window.matchMedia("(prefers-color-scheme: dark)");
-    const onSystemThemeChange = () => {
-      if (settingsState.theme === "system") {
-        applyTheme("system");
-        renderThemeToggleLabel();
-      }
-    };
-    if (typeof media.addEventListener === "function") media.addEventListener("change", onSystemThemeChange);
-    else if (typeof media.addListener === "function") media.addListener(onSystemThemeChange);
   }
 }
 
@@ -496,6 +487,7 @@ function showScreen(screenId) {
 
   screen.classList.add("active");
   currentScreen = screenId;
+  if (document.body) document.body.setAttribute("data-current-screen", screenId);
 
   if (screenId === "logbookScreen") renderLogbook();
   if (screenId === "summariesScreen") renderSummaries();

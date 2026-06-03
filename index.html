@@ -16,18 +16,18 @@
   <script>
     (function () {
       var STORAGE_KEY = "mylogbook.theme";
-      var allowed = { light: true, dark: true, system: true };
       var stored = null;
       try { stored = localStorage.getItem(STORAGE_KEY); } catch (error) { stored = null; }
-      var preference = allowed[stored] ? stored : "system";
-      var resolved = preference === "system"
-        ? (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
-        : preference;
-      document.documentElement.setAttribute("data-theme", resolved);
+      var systemResolved = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      var preference = stored === "dark" || stored === "light" ? stored : (stored === "system" ? systemResolved : "light");
+      if (stored === "system") {
+        try { localStorage.setItem(STORAGE_KEY, preference); } catch (error) {}
+      }
+      document.documentElement.setAttribute("data-theme", preference);
       document.documentElement.setAttribute("data-theme-preference", preference);
     })();
   </script>
-  <link rel="stylesheet" href="styles.css?v=59">
+  <link rel="stylesheet" href="styles.css?v=60">
 </head>
 <body>
   <div id="app">
@@ -37,21 +37,40 @@
 
     <main>
       <section id="homeScreen" class="screen active">
-        <div id="backupCard" class="backup-card backup-ok">
-          <h2 id="backupTitle">Backup up to date</h2>
-          <p id="backupText">Last backup: Never</p>
-          <button id="backupNowButton" class="button primary hidden" type="button">Backup now</button>
-        </div>
+        <div class="home-shell">
+          <div class="home-masthead">
+            <div class="home-brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 80 80" role="img" focusable="false">
+                <path class="crest-laurel" d="M12 54c4 7 10 12 18 15M68 54c-4 7-10 12-18 15"/>
+                <path class="crest-shield" d="M40 8l22 9v19c0 16-9.6 28-22 34-12.4-6-22-18-22-34V17l22-9z"/>
+                <path class="crest-shield-inner" d="M40 16l14 6v14c0 10-5.8 18-14 22-8.2-4-14-12-14-22V22l14-6z"/>
+                <path class="crest-staff" d="M40 24v30"/>
+                <path class="crest-cross" d="M31 38h18M40 29v18"/>
+                <path class="crest-wings" d="M28 31c4 1 7 1 12-2 5 3 8 3 12 2"/>
+              </svg>
+            </div>
+            <div class="home-brand-copy">
+              <h2>Procedure &amp; CPD Logbook</h2>
+              <p class="home-tagline">Your practice, your progress</p>
+            </div>
+            <button id="themeToggleButton" class="button secondary theme-toggle compact-theme-toggle" type="button" aria-label="Theme: Light. Activate to switch to dark mode." aria-describedby="themeToggleHint"><span class="theme-segment theme-light" aria-hidden="true">☀</span><span class="theme-segment theme-dark" aria-hidden="true">☾</span></button>
+          </div>
+          <p id="themeToggleHint" class="help-text home-theme-hint">Theme: Light ↔ Dark</p>
 
-        <div class="home-actions">
-          <button id="addEntryButton" class="button primary" type="button">Add new entry</button>
-          <button id="viewLogbookButton" class="button secondary" type="button">View logbook</button>
-          <button id="viewSummariesButton" class="button secondary" type="button">Summaries</button>
-          <button id="managePlacementsButton" class="button secondary" type="button">Placements</button>
-          <button id="manageSpecialtiesProceduresButton" class="button secondary" type="button">Specialties & procedures</button>
-          <button id="viewBackupButton" class="button secondary" type="button">Backup & export</button>
-          <button id="themeToggleButton" class="button secondary theme-toggle" type="button" aria-label="Theme preference: System. Activate to change." aria-describedby="themeToggleHint">Theme: System (Light)</button>
-          <p id="themeToggleHint" class="help-text">Theme control: System → Light → Dark.</p>
+          <div id="backupCard" class="backup-card backup-ok home-backup-card">
+            <h2 id="backupTitle">Backup up to date</h2>
+            <p id="backupText">Last backup: Never</p>
+            <button id="backupNowButton" class="button primary hidden" type="button">Backup now</button>
+          </div>
+
+          <div class="home-actions">
+            <button id="addEntryButton" class="button primary home-primary-cta" type="button"><span class="home-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span><span>Add new entry</span><span class="home-chevron" aria-hidden="true">›</span></button>
+            <button id="viewLogbookButton" class="button secondary home-nav-card" type="button"><span class="home-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11a3 3 0 013 3v13H8a3 3 0 00-3 3V4z"/><path d="M8 4v19"/></svg></span><span>View logbook</span><span class="home-chevron" aria-hidden="true">›</span></button>
+            <button id="viewSummariesButton" class="button secondary home-nav-card" type="button"><span class="home-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16"/><path d="M7 16v-5"/><path d="M12 16V8"/><path d="M17 16v-9"/></svg></span><span>Summaries</span><span class="home-chevron" aria-hidden="true">›</span></button>
+            <button id="managePlacementsButton" class="button secondary home-nav-card" type="button"><span class="home-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V6h16v14"/><path d="M9 6V3h6v3"/><path d="M12 10v6"/><path d="M9 13h6"/></svg></span><span>Placements</span><span class="home-chevron" aria-hidden="true">›</span></button>
+            <button id="manageSpecialtiesProceduresButton" class="button secondary home-nav-card" type="button"><span class="home-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4v5a4 4 0 008 0V4"/><path d="M14 9a5 5 0 105 5v2"/><circle cx="19" cy="17" r="2"/></svg></span><span>Specialties &amp; procedures</span><span class="home-chevron" aria-hidden="true">›</span></button>
+            <button id="viewBackupButton" class="button secondary home-nav-card" type="button"><span class="home-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h7l2 2h9v10H3z"/><path d="M3 7V5h7l2 2"/></svg></span><span>Backup &amp; export</span><span class="home-chevron" aria-hidden="true">›</span></button>
+          </div>
         </div>
         <p id="appVersionLabel" class="app-version-label">v50</p>
       </section>
@@ -119,8 +138,8 @@
   </div>
 
   <script src="xlsx.full.min.js"></script>
-  <script src="js/config.js?v=59"></script>
-  <script src="js/utils.js?v=59"></script>
-  <script src="app.js?v=59"></script>
+  <script src="js/config.js?v=60"></script>
+  <script src="js/utils.js?v=60"></script>
+  <script src="app.js?v=60"></script>
 </body>
 </html>
