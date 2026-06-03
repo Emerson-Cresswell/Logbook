@@ -25,6 +25,7 @@ Completed:
 - Replaced the inline home masthead crest with a text-only reference to `mylogbook-emblem-correct-app-ready.png`, keeping the external transparent emblem unfiltered, unstretched, and cached for the V60 app shell.
 - Tuned final V60 home masthead/card geometry, typography, and spacing while preserving the existing home action IDs and JavaScript behaviour.
 - Added a focused V60 home card polish pass for more editorial typography, deliberate card proportions, cleaner icon/chevron alignment, and restrained light/dark elevation.
+- Added a follow-up density and dark-mode pass: darker premium navy home surfaces, smaller home card scale, and a subtle teal ambient glow between the backup card and Add new entry CTA.
 - Extended tokenised home-surface, glow, accent, and elevation styles using CSS custom properties for maintainability.
 - Kept existing home-screen actions, routes, and backup behaviour unchanged.
 - Updated runtime asset query strings to `v=60` in `index.html`.

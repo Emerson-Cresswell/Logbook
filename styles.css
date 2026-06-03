@@ -2958,3 +2958,256 @@ html[data-theme="dark"] .home-primary-cta .home-nav-icon {
     font-size: 0.84rem;
   }
 }
+
+/* V60 polish pass 9: denser dark premium home + inter-card ambient glow */
+:root {
+  --home-card-label-size: clamp(1.12rem, 5.1vw, 1.38rem);
+  --home-card-row-height: 64px;
+  --home-cta-row-height: 70px;
+  --home-card-icon-size: 40px;
+  --home-ring-size: 54px;
+  --home-card-icon-radius: 13px;
+  --home-card-side-padding: 14px;
+  --home-card-column-gap: 13px;
+  --home-card-radius-final: 16px;
+  --home-cta-radius-final: 18px;
+  --home-chevron-size-final: 1.45rem;
+  --home-shell-top-gap: 5px;
+  --home-emblem-size: clamp(54px, 15vw, 70px);
+  --home-card-shadow-final: 0 12px 25px rgba(22, 31, 45, 0.068), 0 1px 0 rgba(255,255,255,0.68) inset;
+  --home-card-hover-shadow-final: 0 15px 30px rgba(22, 31, 45, 0.095), 0 1px 0 rgba(255,255,255,0.76) inset;
+  --home-cta-shadow-final: 0 14px 30px rgba(20, 184, 166, 0.24), 0 0 0 1px rgba(141, 255, 243, 0.28) inset, 0 1px 0 rgba(255,255,255,0.34) inset;
+}
+
+html[data-theme="dark"] {
+  --home-bg-dark: radial-gradient(115% 82% at 0% 0%, #071626 0%, #020b18 48%, #000612 100%);
+  --home-masthead-bg: color-mix(in srgb, #061526 92%, #0b2436 8%);
+  --home-masthead-border: #153654;
+  --home-card-bg: color-mix(in srgb, #06162a 92%, #092338 8%);
+  --home-card-glass: color-mix(in srgb, #06162a 88%, transparent);
+  --home-card-border: #173a59;
+  --home-card-border-final: color-mix(in srgb, #173a59 78%, #2dd4bf 22%);
+  --home-card-text: #f2f7ff;
+  --home-subtle-text: #8fa4b7;
+  --home-card-shadow-final: 0 14px 28px rgba(0, 5, 14, 0.62), 0 0 0 1px rgba(58, 158, 192, 0.07) inset, 0 1px 0 rgba(126, 222, 255, 0.08) inset;
+  --home-card-hover-shadow-final: 0 17px 34px rgba(0, 5, 14, 0.7), 0 0 0 1px rgba(67, 215, 220, 0.12) inset, 0 1px 0 rgba(126, 222, 255, 0.12) inset;
+  --home-icon-surface-final: linear-gradient(145deg, rgba(9, 25, 42, 0.94), rgba(3, 13, 26, 0.9));
+  --home-cta-shadow-final: 0 16px 34px rgba(23, 211, 196, 0.24), 0 0 0 1px rgba(125, 255, 244, 0.32) inset, 0 1px 0 rgba(211, 255, 250, 0.14) inset;
+}
+
+body[data-current-screen="homeScreen"] main {
+  padding-top: var(--home-shell-top-gap);
+}
+
+.home-shell {
+  position: relative;
+  isolation: isolate;
+  gap: 10px;
+}
+
+.home-masthead {
+  border-radius: 22px;
+  padding: 12px 12px;
+}
+
+html[data-theme="dark"] .home-masthead {
+  background: linear-gradient(180deg, rgba(7, 22, 38, 0.96), rgba(4, 15, 28, 0.96));
+  border-color: color-mix(in srgb, var(--home-masthead-border) 88%, #2dd4bf 12%);
+}
+
+.home-brand-copy h2 {
+  font-size: clamp(1.04rem, 4.7vw, 1.55rem);
+  line-height: 1.04;
+}
+
+.home-tagline {
+  margin-top: 5px;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+}
+
+.theme-toggle.compact-theme-toggle {
+  width: 80px;
+  max-width: 80px;
+  min-height: 34px;
+}
+
+.theme-segment {
+  min-height: 26px;
+  font-size: 0.92rem;
+}
+
+.home-actions {
+  position: relative;
+  gap: 10px;
+}
+
+.home-actions::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: -34px;
+  left: 16%;
+  right: 16%;
+  height: 68px;
+  border-radius: 999px;
+  background: radial-gradient(ellipse at center, rgba(45, 244, 220, 0.32) 0%, rgba(20, 184, 166, 0.18) 36%, rgba(20, 184, 166, 0) 74%);
+  filter: blur(18px);
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+html[data-theme="dark"] .home-actions::before {
+  opacity: 0.88;
+  background: radial-gradient(ellipse at center, rgba(79, 255, 228, 0.48) 0%, rgba(20, 211, 190, 0.28) 34%, rgba(20, 184, 166, 0.08) 56%, rgba(20, 184, 166, 0) 78%);
+}
+
+.home-actions > .button {
+  position: relative;
+  z-index: 1;
+}
+
+.home-backup-card {
+  min-height: 86px;
+  padding: 12px var(--home-card-side-padding);
+  border-radius: 18px !important;
+  column-gap: 12px;
+}
+
+html[data-theme="dark"] .home-backup-card {
+  background: linear-gradient(180deg, rgba(7, 23, 41, 0.95), rgba(4, 15, 29, 0.96)) !important;
+  border-color: var(--home-card-border-final) !important;
+}
+
+.home-backup-card::before {
+  width: var(--home-ring-size);
+  height: var(--home-ring-size);
+  font-size: 1.65rem;
+}
+
+.home-backup-card h2 {
+  font-size: clamp(1.14rem, 5vw, 1.42rem);
+  line-height: 1.05;
+}
+
+.home-backup-card p {
+  font-size: 0.84rem;
+}
+
+.home-primary-cta,
+.home-nav-card {
+  padding: 9px var(--home-card-side-padding) !important;
+}
+
+.home-primary-cta {
+  background: linear-gradient(137deg, color-mix(in srgb, var(--home-teal) 78%, #3bded5 22%) 0%, color-mix(in srgb, var(--home-teal) 50%, #075160 50%) 100%) !important;
+}
+
+html[data-theme="dark"] .home-primary-cta {
+  background: linear-gradient(137deg, rgba(41, 205, 194, 0.98) 0%, rgba(8, 111, 120, 0.98) 100%) !important;
+}
+
+html[data-theme="dark"] .home-nav-card {
+  background: linear-gradient(180deg, rgba(7, 23, 41, 0.94), rgba(4, 14, 27, 0.96)) !important;
+  border-color: var(--home-card-border-final) !important;
+}
+
+.home-primary-cta > span:nth-child(2),
+.home-nav-card > span:nth-child(2) {
+  font-size: var(--home-card-label-size);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+}
+
+.home-nav-card .home-nav-icon,
+.home-primary-cta .home-nav-icon {
+  width: var(--home-card-icon-size);
+  height: var(--home-card-icon-size);
+}
+
+.home-nav-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.8;
+}
+
+.home-primary-cta .home-nav-icon svg {
+  width: 21px;
+  height: 21px;
+  stroke-width: 2;
+}
+
+.home-chevron {
+  font-size: var(--home-chevron-size-final);
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --home-card-label-size: clamp(1.2rem, 2.4vw, 1.45rem);
+    --home-card-row-height: 68px;
+    --home-cta-row-height: 74px;
+    --home-card-icon-size: 42px;
+    --home-ring-size: 58px;
+    --home-emblem-size: 74px;
+  }
+
+  .home-shell,
+  .home-actions {
+    gap: 12px;
+  }
+
+  .home-masthead {
+    padding: 14px 14px;
+  }
+}
+
+@media (max-width: 390px) {
+  :root {
+    --home-card-label-size: clamp(1rem, 4.9vw, 1.18rem);
+    --home-card-row-height: 58px;
+    --home-cta-row-height: 64px;
+    --home-card-icon-size: 36px;
+    --home-ring-size: 48px;
+    --home-card-side-padding: 12px;
+    --home-card-column-gap: 11px;
+    --home-chevron-size-final: 1.32rem;
+    --home-emblem-size: 50px;
+  }
+
+  .home-masthead {
+    padding: 11px 10px;
+    border-radius: 20px;
+  }
+
+  .home-brand-copy h2 {
+    font-size: clamp(0.98rem, 5vw, 1.18rem);
+  }
+
+  .home-tagline {
+    font-size: 0.58rem;
+    letter-spacing: 0.095em;
+  }
+
+  .home-backup-card {
+    min-height: 78px;
+    padding: 11px 12px;
+    column-gap: 10px;
+  }
+
+  .home-backup-card h2 {
+    font-size: clamp(1rem, 4.9vw, 1.18rem);
+  }
+
+  .home-backup-card p {
+    font-size: 0.78rem;
+  }
+
+  .home-actions::before {
+    top: -28px;
+    left: 12%;
+    right: 12%;
+    height: 56px;
+    filter: blur(16px);
+  }
+}
