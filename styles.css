@@ -2118,8 +2118,6 @@ html[data-theme="dark"] body[data-current-screen="homeScreen"] { background: var
   box-shadow: 0 14px 28px rgba(15,23,42,0.14), 0 0 0 1px rgba(255,255,255,0.2) inset;
 }
 .home-brand-mark { width: 46px; height: 46px; border-radius: 14px; display:grid; place-items:center; background: linear-gradient(145deg, var(--home-teal-glow), color-mix(in srgb, var(--home-coral-accent) 26%, transparent)); border: 1px solid var(--home-masthead-border); }
-.home-brand-mark svg { width: 28px; height: 28px; stroke: var(--color-text-primary); fill: none; stroke-width: 2.2; }
-html[data-theme="dark"] .home-brand-mark svg { stroke: #c8f7ff; }
 .home-brand-copy h2 { margin: 0; font-size: 1.2rem; line-height: 1.22; }
 .home-tagline { margin: 3px 0 0; color: var(--color-text-secondary); font-size: 0.88rem; }
 .compact-theme-toggle { min-height: 40px; padding: 8px 12px; border-radius: 12px; font-size: 0.86rem; font-weight: 800; }
@@ -2288,7 +2286,6 @@ html[data-theme="dark"] .home-masthead {
   border-radius: 16px;
   box-shadow: 0 9px 20px rgba(11, 31, 49, 0.18), inset 0 1px 0 rgba(255,255,255,0.34);
 }
-.home-brand-mark svg { width: 24px; height: 24px; stroke-width: 2.1; }
 .home-brand-copy { padding-left: 12px; }
 .home-brand-copy h2 {
   font-size: var(--home-title-size);
@@ -2419,7 +2416,6 @@ html[data-theme="dark"] .home-masthead {
   background: radial-gradient(120% 120% at 35% 25%, color-mix(in srgb, var(--home-teal) 42%, #ffffff 58%) 0%, color-mix(in srgb, var(--home-card-bg) 84%, transparent) 62%, color-mix(in srgb, var(--home-accent-coral) 24%, transparent) 100%);
   border: 1px solid color-mix(in srgb, var(--home-card-border) 78%, var(--home-accent-coral) 22%);
 }
-.home-brand-mark svg { stroke: color-mix(in srgb, var(--home-card-text) 84%, var(--home-accent-coral) 16%); }
 .home-brand-copy h2 { max-width: 14ch; }
 .compact-theme-toggle {
   border-color: color-mix(in srgb, var(--home-card-border) 82%, transparent) !important;
@@ -2495,7 +2491,6 @@ html[data-theme="dark"] .home-masthead { box-shadow: var(--home-hero-curve-shado
   border: 1px solid color-mix(in srgb, var(--home-teal) 55%, transparent);
   opacity: 0.5;
 }
-.home-brand-mark svg { position: relative; z-index: 1; }
 .home-brand-copy h2 { line-height: 1.03; }
 .home-tagline { opacity: 0.95; }
 
@@ -2554,48 +2549,20 @@ html[data-theme="dark"] .home-nav-card {
 
 .app-version-label { margin-top: 8px; font-size: 0.68rem; letter-spacing: 0.02em; }
 
-/* V60 polish pass 6: two-mode premium theme control + crest emblem */
+/* V60 polish pass 6: two-mode premium theme control */
 :root {
   --home-toggle-bg: color-mix(in srgb, var(--home-masthead-bg) 70%, transparent);
   --home-toggle-border: color-mix(in srgb, var(--home-card-border) 72%, var(--home-teal) 28%);
   --home-toggle-active-bg: radial-gradient(circle at 35% 25%, color-mix(in srgb, var(--home-teal) 38%, #ffffff 62%) 0%, color-mix(in srgb, var(--home-card-bg) 86%, transparent) 72%);
   --home-toggle-active-text: var(--home-card-text);
-  --home-crest-shield-fill: color-mix(in srgb, var(--home-teal) 68%, #0f766e 32%);
-  --home-crest-stroke: color-mix(in srgb, var(--home-accent-coral) 84%, var(--home-card-text) 16%);
-  --home-crest-line: #f7fffe;
 }
 html[data-theme="dark"] {
   --home-toggle-active-bg: radial-gradient(circle at 42% 28%, rgba(58, 220, 213, 0.38) 0%, rgba(9, 43, 62, 0.94) 72%);
   --home-toggle-active-text: #d8fffb;
-  --home-crest-shield-fill: color-mix(in srgb, var(--home-teal) 52%, #0b253d 48%);
-  --home-crest-line: #dffcff;
 }
 
 .home-brand-mark {
   background: radial-gradient(120% 115% at 34% 24%, rgba(255,255,255,0.72) 0%, color-mix(in srgb, var(--home-teal) 32%, transparent) 30%, color-mix(in srgb, var(--home-card-bg) 90%, transparent) 64%, color-mix(in srgb, var(--home-accent-coral) 18%, transparent) 100%);
-}
-.home-brand-mark svg { width: 38px; height: 38px; overflow: visible; }
-.home-brand-mark .crest-shield {
-  fill: var(--home-crest-shield-fill);
-  stroke: var(--home-crest-stroke);
-  stroke-width: 2.1;
-  filter: drop-shadow(0 5px 8px rgba(2, 12, 24, 0.18));
-}
-.home-brand-mark .crest-shield-inner,
-.home-brand-mark .crest-staff,
-.home-brand-mark .crest-cross,
-.home-brand-mark .crest-wings {
-  fill: none;
-  stroke: var(--home-crest-line);
-  stroke-width: 2.1;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.home-brand-mark .crest-laurel {
-  fill: none;
-  stroke: var(--home-accent-coral);
-  stroke-width: 2;
-  stroke-linecap: round;
 }
 
 .theme-toggle.compact-theme-toggle {
