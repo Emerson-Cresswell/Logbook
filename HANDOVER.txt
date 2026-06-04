@@ -51,6 +51,7 @@ V60 Premium Home Screen Redesign (current most-recent task):
 - Latest follow-up preserves the unboxed masthead/backup-needed direction while fixing dark safe-area coverage, making Add new entry a darker top-to-bottom teal gradient, reducing home label scale, softening secondary card outlines, spacing backup text away from the icon, and replacing the sun mark with a CSS outline sun.
 - Final finishing pass focuses only on Add new entry colour and facing-edge illumination: darker layered teal gradient, inset lower depth, dark icon well, and narrow centre-weighted top/bottom edge glows without broad background haze.
 - Latest finishing pass keeps layout unchanged but makes Add new entry darker again and implements true horizontal centre-weighted top/bottom edge illumination using gradient layers that fade before the corners.
+- Latest CSS-only correction keeps behaviour/layout unchanged and changes the facing glow to short centred pseudo-element strips while darkening the Add new entry glass gradient further.
 - Removed System theme mode for V60 runtime UI; theme is now explicit Light/Dark only, with saved `system` preferences migrated to the currently resolved palette.
 - Kept existing behaviour for all flows, data model, dialogs, and backup/export/import features.
 - Bumped runtime version label to v60 and aligned cache-busting query strings.
