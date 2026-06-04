@@ -8,6 +8,7 @@ const FILES_TO_CACHE = [
   "./js/config.js?v=60",
   "./js/utils.js?v=60",
   "./manifest.json",
+  "./mylogbook-emblem-correct-app-ready.png",
   "./icon-192.png",
   "./icon-512.png",
   "./icon-1024.png",

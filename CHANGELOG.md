@@ -22,6 +22,17 @@ Service worker/cache changed: Yes
 Completed:
 - Redesigned home screen header/hero, backup status card, CTA hierarchy, navigation cards, theme control placement, and footer/version presentation.
 - Refined V60 home crest/shield emblem and replaced the three-state System/Light/Dark theme control with a two-state Light/Dark segmented pill; saved `system` preferences now migrate to an explicit Light/Dark value.
+- Replaced the inline home masthead crest with a text-only reference to `mylogbook-emblem-correct-app-ready.png`, keeping the external transparent emblem unfiltered, unstretched, and cached for the V60 app shell.
+- Tuned final V60 home masthead/card geometry, typography, and spacing while preserving the existing home action IDs and JavaScript behaviour.
+- Added a focused V60 home card polish pass for more editorial typography, deliberate card proportions, cleaner icon/chevron alignment, and restrained light/dark elevation.
+- Added a follow-up density and dark-mode pass: darker premium navy home surfaces, smaller home card scale, and a subtle teal ambient glow between the backup card and Add new entry CTA.
+- Fixed the installed iPhone PWA top safe-area/status region so it inherits a theme-appropriate V60 home background instead of showing a harsh white strip.
+- Unified the installed-PWA safe-area, root, body, app shell, and dynamic theme colour against the same V60 home top-background tokens to remove the remaining horizontal seam.
+- Added a coordinated V60 refinement pass for seamless full-width safe-area backgrounds, unboxed masthead, single-line strapline, calmer CTA/card scale, perimeter-based glow, subtler theme icon styling, and premium backup-needed treatment.
+- Refined dark safe-area coverage, Add new entry's darker vertical teal gradient/perimeter light, edge-only glow, smaller home labels, subtler secondary card borders, backup text spacing, and the outline sun icon.
+- Finalised the Add new entry colour/lighting pass with a deeper layered teal gradient, darker inset icon well, and tighter centre-weighted facing-edge glow shared with the backup card.
+- Narrow finishing pass further darkens the Add new entry control and changes the shared light effect to horizontal centre-weighted edge gradients rather than broad or uniform perimeter glow.
+- CSS-only correction pass replaces broad edge illumination with short centred glow strips on the backup card and Add new entry button while pushing the CTA gradient darker.
 - Extended tokenised home-surface, glow, accent, and elevation styles using CSS custom properties for maintainability.
 - Kept existing home-screen actions, routes, and backup behaviour unchanged.
 - Updated runtime asset query strings to `v=60` in `index.html`.

@@ -41,6 +41,17 @@ Hosting/deployment workflow (current):
 V60 Premium Home Screen Redesign (current most-recent task):
 - Redesigned home screen only using extensible V59 theme tokens and new V60 home tokens.
 - Added premium hero, elevated backup/status card styling, and refined home navigation card states.
+- Home masthead now references the external transparent emblem file `mylogbook-emblem-correct-app-ready.png`; the file is expected at repo root but is not included by this text-only update.
+- Final V60 polish tightened masthead alignment, card geometry, typography, and responsive spacing while keeping home-screen scope only.
+- Latest focused refinement improves home CTA/navigation card proportions, serif label feel, icon tile alignment, chevron placement, and restrained pearl/teal elevation without changing IDs or JS behaviour.
+- Follow-up screenshot refinement darkens dark-mode home surfaces, reduces home card/text/icon scale, and adds the missing restrained teal glow in the gap between backup status and Add new entry.
+- Latest status-area fix switches the iOS installed-PWA status bar to translucent and sets theme-aware root/header/home backgrounds so the top safe area is navy in dark mode and soft ivory in light mode.
+- Follow-up seam fix centralises the home top-background colours and uses them for `theme-color`, root/body backgrounds, transparent header/app shell, and the home gradients so the iOS safe area blends without a band.
+- Latest coordinated V60 refinement unboxes the masthead, keeps the strapline on one line, tunes down home button/card scale, changes the glow to facing-edge perimeter illumination, and redesigns backup-needed state while preserving IDs/behaviour.
+- Latest follow-up preserves the unboxed masthead/backup-needed direction while fixing dark safe-area coverage, making Add new entry a darker top-to-bottom teal gradient, reducing home label scale, softening secondary card outlines, spacing backup text away from the icon, and replacing the sun mark with a CSS outline sun.
+- Final finishing pass focuses only on Add new entry colour and facing-edge illumination: darker layered teal gradient, inset lower depth, dark icon well, and narrow centre-weighted top/bottom edge glows without broad background haze.
+- Latest finishing pass keeps layout unchanged but makes Add new entry darker again and implements true horizontal centre-weighted top/bottom edge illumination using gradient layers that fade before the corners.
+- Latest CSS-only correction keeps behaviour/layout unchanged and changes the facing glow to short centred pseudo-element strips while darkening the Add new entry glass gradient further.
 - Removed System theme mode for V60 runtime UI; theme is now explicit Light/Dark only, with saved `system` preferences migrated to the currently resolved palette.
 - Kept existing behaviour for all flows, data model, dialogs, and backup/export/import features.
 - Bumped runtime version label to v60 and aligned cache-busting query strings.
