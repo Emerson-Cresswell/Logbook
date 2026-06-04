@@ -31,6 +31,7 @@ Completed:
 - Added a coordinated V60 refinement pass for seamless full-width safe-area backgrounds, unboxed masthead, single-line strapline, calmer CTA/card scale, perimeter-based glow, subtler theme icon styling, and premium backup-needed treatment.
 - Refined dark safe-area coverage, Add new entry's darker vertical teal gradient/perimeter light, edge-only glow, smaller home labels, subtler secondary card borders, backup text spacing, and the outline sun icon.
 - Finalised the Add new entry colour/lighting pass with a deeper layered teal gradient, darker inset icon well, and tighter centre-weighted facing-edge glow shared with the backup card.
+- Narrow finishing pass further darkens the Add new entry control and changes the shared light effect to horizontal centre-weighted edge gradients rather than broad or uniform perimeter glow.
 - Extended tokenised home-surface, glow, accent, and elevation styles using CSS custom properties for maintainability.
 - Kept existing home-screen actions, routes, and backup behaviour unchanged.
 - Updated runtime asset query strings to `v=60` in `index.html`.
